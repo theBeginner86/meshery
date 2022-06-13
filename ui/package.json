@@ -52,7 +52,7 @@
     "@rjsf/material-ui": "^3.0.0",
     "@zeit/next-css": "^1.0.1",
     "babel-plugin-istanbul": "^6.0.0",
-    "babel-plugin-relay": "^13.2.0",
+    "babel-plugin-relay": "^14.0.0",
     "billboard.js": "=3.3.3",
     "caniuse-lite": "^1.0.30001279",
     "classnames": "^2.3.1",
