@@ -38,7 +38,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@cypress/code-coverage": "^3.10.0",
-    "@date-io/moment": "^2.11.0",
+    "@date-io/moment": "^2.16.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
