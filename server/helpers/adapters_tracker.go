@@ -17,7 +17,7 @@ import (
 	"github.com/layer5io/meshery/server/helpers/utils"
 	"github.com/layer5io/meshery/server/models"
 	meshkitkube "github.com/layer5io/meshkit/utils/kubernetes"
-	"github.com/spf13/viper"
+	// "github.com/spf13/viper"
 )
 
 // AdaptersTracker is used to hold the list of known adapters
@@ -86,7 +86,7 @@ func (a *AdaptersTracker) DeployAdapter(ctx context.Context, adapter models.Adap
 		}
 		var mesheryNetworkSettings *types.SummaryNetworkSettings
 		for _, container := range containers {
-			if strings.Contains(container.Image, "layer5/meshery") {
+			if strings.Contains(container.Image, "thebeginner86/meshery-dev") {
 				mesheryNetworkSettings = container.NetworkSettings
 			}
 		}
@@ -154,11 +154,11 @@ func (a *AdaptersTracker) DeployAdapter(ctx context.Context, adapter models.Adap
 		}
 
 	case "kubernetes":
-		build := viper.GetString("BUILD")
-		_, latestVersion, err := models.CheckLatestVersion(build)
-		if err != nil {
-			return ErrDeployingAdapterInK8s(err)
-		}
+		// build := viper.GetString("BUILD")
+		// _, latestVersion, err := models.CheckLatestVersion(build)
+		// if err != nil {
+		// 	return ErrDeployingAdapterInK8s(err)
+		// }
 		var k8scontext models.K8sContext
 		allContexts, ok := ctx.Value(models.AllKubeClusterKey).([]models.K8sContext)
 		if !ok || len(allContexts) == 0 {
@@ -183,9 +183,9 @@ func (a *AdaptersTracker) DeployAdapter(ctx context.Context, adapter models.Adap
 			ReleaseName:     "meshery",
 			CreateNamespace: true,
 			ChartLocation: meshkitkube.HelmChartLocation{
-				Repository: utils.HelmChartURL,
+				Repository: "https://thebeginner86.github.io/helm-test",
 				Chart:      utils.HelmChartName,
-				Version:    latestVersion,
+				Version:    "0.6.0",
 			},
 			OverrideValues: overrideValues,
 			Action:         meshkitkube.INSTALL,
@@ -243,11 +243,11 @@ func (a *AdaptersTracker) UndeployAdapter(ctx context.Context, adapter models.Ad
 		}
 
 	case "kubernetes":
-		build := viper.GetString("BUILD")
-		_, latestVersion, err := models.CheckLatestVersion(build)
-		if err != nil {
-			return ErrUnDeployingAdapterInK8s(err)
-		}
+		// build := viper.GetString("BUILD")
+		// _, latestVersion, err := models.CheckLatestVersion(build)
+		// if err != nil {
+		// 	return ErrUnDeployingAdapterInK8s(err)
+		// }
 		var k8scontext models.K8sContext
 		allContexts, ok := ctx.Value(models.AllKubeClusterKey).([]models.K8sContext)
 		if !ok || len(allContexts) == 0 {
@@ -272,9 +272,9 @@ func (a *AdaptersTracker) UndeployAdapter(ctx context.Context, adapter models.Ad
 			ReleaseName:     "meshery",
 			CreateNamespace: true,
 			ChartLocation: meshkitkube.HelmChartLocation{
-				Repository: utils.HelmChartURL,
+				Repository: "https://thebeginner86.github.io/helm-test",
 				Chart:      utils.HelmChartName,
-				Version:    latestVersion,
+				Version:    "0.6.0",
 			},
 			OverrideValues: overrideValues,
 			Action:         meshkitkube.UNINSTALL,

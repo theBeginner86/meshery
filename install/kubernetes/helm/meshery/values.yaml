@@ -7,8 +7,8 @@ restartPolicy: Always
 metadata:
   name: meshery
 image:
-  repository: layer5/meshery
-  tag: stable-latest
+  repository: thebeginner86/meshery-dev
+  tag: latest
   pullPolicy: Always
 
 env:
