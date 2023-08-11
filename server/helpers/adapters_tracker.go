@@ -76,11 +76,15 @@ func (a *AdaptersTracker) DeployAdapter(ctx context.Context, adapter models.Adap
 	switch platform {
 	case "docker":
 		cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
+		fmt.Printf("cli: %#v\n", cli)
+	  fmt.Printf("err: %#v\n", err)
 		if err != nil {
 			return ErrDeployingAdapterInDocker(err)
 		}
 
 		containers, err := cli.ContainerList(ctx, types.ContainerListOptions{})
+		fmt.Printf("containers: %#v\n", cli)
+	  fmt.Printf("err: %#v\n", err)
 		if err != nil {
 			return ErrDeployingAdapterInDocker(err)
 		}
