@@ -1,7 +1,7 @@
 version: "3"
 services:
   meshery:
-    image: thebeginner86/meshery-dev:latest
+    image: thebeginner86/meshery-dev:docker-latest
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     environment:

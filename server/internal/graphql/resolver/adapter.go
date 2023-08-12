@@ -49,9 +49,9 @@ func (r *Resolver) changeAdapterStatus(ctx context.Context, _ models.Provider, t
 	r.Log.Debug(fmt.Printf("changing adapter status for %s on port %s to %s \n", adapterName, targetPort, targetStatus))
 
 	adapter := models.Adapter{Name: adapterName, Location: fmt.Sprintf("%s:%s", adapterName, targetPort)}
-	go func(ctx context.Context, del bool) {
+	// go func(ctx context.Context, del bool) {
 		var operation string
-		if del {
+		if deleteAdapter {
 			operation = "Undeploy"
 			err = r.Config.AdapterTracker.UndeployAdapter(ctx, adapter)
 		} else {
@@ -64,7 +64,7 @@ func (r *Resolver) changeAdapterStatus(ctx context.Context, _ models.Provider, t
 		} else {
 			r.Log.Info("Successfully " + operation + "ed adapter")
 		}
-	}(context.Background(), deleteAdapter)
+	// }(ctx, deleteAdapter)
 
 	return model.StatusProcessing, nil
 }
