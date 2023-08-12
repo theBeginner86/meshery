@@ -64,7 +64,7 @@ func (r *Resolver) changeAdapterStatus(ctx context.Context, _ models.Provider, t
 		} else {
 			r.Log.Info("Successfully " + operation + "ed adapter")
 		}
-	}(ctx, deleteAdapter)
+	}(context.Background(), deleteAdapter)
 
 	return model.StatusProcessing, nil
 }

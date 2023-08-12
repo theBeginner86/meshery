@@ -83,7 +83,7 @@ func (a *AdaptersTracker) DeployAdapter(ctx context.Context, adapter models.Adap
 		}
 
 		containers, err := cli.ContainerList(ctx, types.ContainerListOptions{})
-		fmt.Printf("containers: %#v\n", cli)
+		fmt.Printf("containers: %#v\n", containers)
 	  fmt.Printf("err: %#v\n", err)
 		if err != nil {
 			return ErrDeployingAdapterInDocker(err)
