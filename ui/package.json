@@ -135,7 +135,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-cypress": "^2.13.3",
     "eslint-plugin-prettier": "^5.0.0",
-    "eslint-plugin-react": "^7.31.8",
+    "eslint-plugin-react": "^7.33.2",
     "http-proxy": "^1.18.1",
     "husky": "^7.0.2",
     "lint-staged": "^13.2.3",
